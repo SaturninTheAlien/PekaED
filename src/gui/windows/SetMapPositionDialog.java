@@ -78,16 +78,16 @@ public class SetMapPositionDialog extends JDialog {
 			});
 			
 			try {
-				String filePath = Settings.BASE_PATH + "\\gfx\\" + "MAP.bmp";
+				String filePath = Settings.BASE_PATH + File.separator + "gfx" + File.separator + "MAP.bmp";
 				
 				if (Data.currentFile != null) {
 					if (Data.mode == Constants.MODE_CE) {
-						if (new File(Data.currentFile.getParentFile().getAbsolutePath() + "\\gfx\\" + "\\MAP.bmp").exists()) {
-							filePath = Data.currentFile.getParentFile().getAbsolutePath() + "\\gfx\\" + "\\MAP.bmp";
+						if (new File(Data.currentFile.getParentFile().getAbsolutePath() + File.separator + "gfx" + File.separator + File.separator + "MAP.bmp").exists()) {
+							filePath = Data.currentFile.getParentFile().getAbsolutePath() + File.separator + "gfx" + File.separator + File.separator + "MAP.bmp";
 						}
 					} else {
-						if (new File(Data.currentFile.getParentFile().getAbsolutePath() + "\\MAP.bmp").exists()) {
-							filePath = Data.currentFile.getParentFile().getAbsolutePath() + "\\MAP.bmp";
+						if (new File(Data.currentFile.getParentFile().getAbsolutePath() + File.separator + "MAP.bmp").exists()) {
+							filePath = Data.currentFile.getParentFile().getAbsolutePath() + File.separator + "MAP.bmp";
 						}
 					}
 				}

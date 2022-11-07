@@ -366,11 +366,11 @@ public class EpisodeSettingsDialog extends JDialog {
 		boolean showMap = chckbxShowOnMap.isSelected();
 		boolean showInGame = chckbxShowInGame.isSelected();
 		
-		String[] tmp = textField.getText().split("\\\\");
+		String[] tmp = textField.getText().split(File.separator);
 		
 		String mapImage = tmp[tmp.length - 1];
 		
-		tmp = txtPkstuffbmp.getText().split("\\\\");
+		tmp = txtPkstuffbmp.getText().split(File.separator);
 		String inGame = tmp[tmp.length - 1];
 		
 		int mx = (int) spinner.getValue();

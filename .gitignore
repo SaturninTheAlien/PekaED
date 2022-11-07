@@ -3,6 +3,8 @@ build/
 nbproject/
 dist/
 
+*.class
+
 build.xml
 manifest.mf
 settings

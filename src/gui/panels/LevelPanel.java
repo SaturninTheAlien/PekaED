@@ -79,8 +79,8 @@ public class LevelPanel extends JPanel implements MouseListener, MouseMotionList
 		
 		setPreferredSize(new Dimension(PK2Map.MAP_WIDTH * 32, PK2Map.MAP_HEIGHT * 32));
 		
-		Data.bgFile = new File(Settings.SCENERY_PATH + "\\" + Settings.DEFAULT_BACKGROUND);
-		Data.tilesetFile = new File(Settings.TILES_PATH + "\\" + Settings.DEFAULT_TILESET);
+		Data.bgFile = new File(Settings.SCENERY_PATH + File.separator + Settings.DEFAULT_BACKGROUND);
+		Data.tilesetFile = new File(Settings.TILES_PATH + File.separator + Settings.DEFAULT_TILESET);
 		
 		setBackground();
 		setTileset();

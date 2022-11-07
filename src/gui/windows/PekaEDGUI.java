@@ -1755,7 +1755,7 @@ public class PekaEDGUI {
 
 		try{
 			Runtime runTime = Runtime.getRuntime();
-			Process process = runTime.exec("\"" + Settings.BASE_PATH + "\\" + cmd + "\"" + " " + args);
+			Process process = runTime.exec("\"" + Settings.BASE_PATH + File.separator + cmd + "\"" + " " + args);
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(null, "Can't test level!\n" + e.getMessage(), "Can't test level!", JOptionPane.ERROR_MESSAGE);
 			
@@ -1820,16 +1820,16 @@ public class PekaEDGUI {
 		if (ok) {
 			Data.currentFile = new File(file);
 			
-			if (new File(Data.currentFile.getParentFile().getAbsolutePath() + "\\" + Data.map.backgroundImageFile).exists()) {
-				Data.bgFile = new File(Data.currentFile.getParentFile().getAbsolutePath() + "\\" + Data.map.backgroundImageFile);
+			if (new File(Data.currentFile.getParentFile().getAbsolutePath() + File.separator + Data.map.backgroundImageFile).exists()) {
+				Data.bgFile = new File(Data.currentFile.getParentFile().getAbsolutePath() + File.separator + Data.map.backgroundImageFile);
 			} else {
-				Data.bgFile = new File(Settings.SCENERY_PATH + "\\" + Data.map.backgroundImageFile);
+				Data.bgFile = new File(Settings.SCENERY_PATH + File.separator + Data.map.backgroundImageFile);
 			}
 			
-			if (new File(Data.currentFile.getParentFile().getAbsolutePath() + "\\" + Data.map.tilesetImageFile).exists()) {
-				Data.tilesetFile = new File(Data.currentFile.getParentFile().getAbsolutePath() + "\\" + Data.map.tilesetImageFile);
+			if (new File(Data.currentFile.getParentFile().getAbsolutePath() + File.separator + Data.map.tilesetImageFile).exists()) {
+				Data.tilesetFile = new File(Data.currentFile.getParentFile().getAbsolutePath() + File.separator + Data.map.tilesetImageFile);
 			} else {
-				Data.tilesetFile = new File(Settings.TILES_PATH + "\\" + Data.map.tilesetImageFile);
+				Data.tilesetFile = new File(Settings.TILES_PATH + File.separator + Data.map.tilesetImageFile);
 			}
 			
 			lp.setMap();
@@ -1912,8 +1912,8 @@ public class PekaEDGUI {
 		
 		tp.in = 0;
 		
-		Data.bgFile = new File(Settings.SCENERY_PATH + "\\" + Settings.DEFAULT_BACKGROUND);
-		Data.tilesetFile = new File(Settings.TILES_PATH + "\\" + Settings.DEFAULT_TILESET);
+		Data.bgFile = new File(Settings.SCENERY_PATH + File.separator + Settings.DEFAULT_BACKGROUND);
+		Data.tilesetFile = new File(Settings.TILES_PATH + File.separator + Settings.DEFAULT_TILESET);
 		
 		msp.setMap();
 		sp.setMap();

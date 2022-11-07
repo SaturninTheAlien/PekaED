@@ -817,12 +817,12 @@ public class PK2Map {
 		for (int i = 0; i < prototypesList.size(); i++) {
 			File fi = null;
 
-			if (Data.mode != Constants.MODE_CE && new File(Data.currentEpisodeName + "\\" + prototypesList.get(i)).exists()) {
-				fi = new File(Data.currentEpisodeName + "\\" + prototypesList.get(i));
-			} else if (Data.mode == Constants.MODE_CE && new File(file.getParent() + "\\sprites\\" + prototypesList.get(i)).exists()) {
-				fi = new File(file.getParent() + "\\sprites\\" + prototypesList.get(i));
+			if (Data.mode != Constants.MODE_CE && new File(Data.currentEpisodeName + File.separator + prototypesList.get(i)).exists()) {
+				fi = new File(Data.currentEpisodeName + File.separator + prototypesList.get(i));
+			} else if (Data.mode == Constants.MODE_CE && new File(file.getParent() + File.separator + "sprites" + File.separator + prototypesList.get(i)).exists()) {
+				fi = new File(file.getParent() + File.separator + "sprites" + File.separator + prototypesList.get(i));
 			} else {
-				fi = new File(Settings.SPRITE_PATH + "\\" + prototypesList.get(i));
+				fi = new File(Settings.SPRITE_PATH + File.separator + prototypesList.get(i));
 			}
 			
 			if (fi.exists()) {

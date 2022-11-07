@@ -137,22 +137,22 @@ public class PK2Sprite {
 			File fi = null;
 			
 			if (!Data.currentEpisodeName.isEmpty()) {
-				if (Data.mode != Constants.MODE_CE && new File(Data.currentEpisodeName + "\\" + filename.getName()).exists()) {
-					fi = new File(Data.currentEpisodeName + "\\" + filename.getName());
-				} else if (Data.mode == Constants.MODE_CE && new File(Data.currentEpisodeName + "\\sprites\\" + filename.getName()).exists()) {
-					fi = new File(Data.currentEpisodeName + "\\sprites\\" + filename.getName());
+				if (Data.mode != Constants.MODE_CE && new File(Data.currentEpisodeName + File.separator + filename.getName()).exists()) {
+					fi = new File(Data.currentEpisodeName + File.separator + filename.getName());
+				} else if (Data.mode == Constants.MODE_CE && new File(Data.currentEpisodeName + File.separator +"sprites" + File.separator + filename.getName()).exists()) {
+					fi = new File(Data.currentEpisodeName + File.separator +"sprites" + File.separator + filename.getName());
 				} else {
-					fi = new File(Settings.SPRITE_PATH + "\\" + filename.getName());
+					fi = new File(Settings.SPRITE_PATH + File.separator + filename.getName());
 				}
 			} else {
 				fi = filename;
 			}
 			
 			/*
-			if (new File(filename.getParentFile().getParent() + "\\sprites\\" + filename.getName()).exists()) {
-				fi = new File(filename.getParentFile().getParent() + "\\sprites\\" + filename.getName());
+			if (new File(filename.getParentFile().getParent() + File.separator +"sprites" + File.separator + filename.getName()).exists()) {
+				fi = new File(filename.getParentFile().getParent() + File.separator +"sprites" + File.separator + filename.getName());
 			} else {
-				fi = new File(Settings.SPRITE_PATH + "\\" + filename.getName());
+				fi = new File(Settings.SPRITE_PATH + File.separator + filename.getName());
 			}*/
 			
 			dis = new DataInputStream(new FileInputStream(fi));
@@ -189,18 +189,18 @@ public class PK2Sprite {
 			File fi = null;
 	
 			if (!Data.currentEpisodeName.isEmpty()) {
-				if (Data.mode != Constants.MODE_CE && new File(Data.currentEpisodeName + "\\" + filename.getName()).exists()) {
-					fi = new File(Data.currentEpisodeName + "\\" + filename.getName());
-				} else if (Data.mode == Constants.MODE_CE && new File(Data.currentEpisodeName + "\\sprites\\" + filename.getName()).exists()) {
-					fi = new File(Data.currentEpisodeName + "\\sprites\\" + filename.getName());
+				if (Data.mode != Constants.MODE_CE && new File(Data.currentEpisodeName + File.separator + filename.getName()).exists()) {
+					fi = new File(Data.currentEpisodeName + File.separator + filename.getName());
+				} else if (Data.mode == Constants.MODE_CE && new File(Data.currentEpisodeName + File.separator +"sprites" + File.separator + filename.getName()).exists()) {
+					fi = new File(Data.currentEpisodeName + File.separator +"sprites" + File.separator + filename.getName());
 				} else {
-					fi = new File(Settings.SPRITE_PATH + "\\" + filename.getName());
+					fi = new File(Settings.SPRITE_PATH + File.separator + filename.getName());
 				}
 			} else {
 				if (filename.exists()) {
 					fi = filename;
 				} else {
-					fi = new File(Settings.SPRITE_PATH + "\\" + filename.getName());
+					fi = new File(Settings.SPRITE_PATH + File.separator + filename.getName());
 				}
 			}
 			
@@ -214,8 +214,8 @@ public class PK2Sprite {
 				loadVersion13(dis);
 			}
 			
-			if (filename.getParentFile() != null && new File(filename.getParentFile().getAbsolutePath() + "\\" + cleanString(imageFile)).exists()) {
-				ImageFileStr = filename.getParentFile().getAbsolutePath() + "\\" + cleanString(imageFile);
+			if (filename.getParentFile() != null && new File(filename.getParentFile().getAbsolutePath() + File.separator + cleanString(imageFile)).exists()) {
+				ImageFileStr = filename.getParentFile().getAbsolutePath() + File.separator + cleanString(imageFile);
 			} else {
 				ImageFileStr = Settings.SPRITE_PATH + cleanString(imageFile);
 			}

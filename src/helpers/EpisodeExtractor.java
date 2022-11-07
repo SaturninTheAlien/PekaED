@@ -83,7 +83,7 @@ public final class EpisodeExtractor {
 		
 		for (File f : ef.listFiles()) {
 			if (f.getName().endsWith("map")) {
-				ze.add(new ZipEntry("episodes\\" + Data.currentEpisodeName + "\\" + f.getName()));
+				ze.add(new ZipEntry("episodes"  + File.separator + Data.currentEpisodeName + File.separator + f.getName()));
 				
 				files.add(f);
 			}
@@ -106,22 +106,22 @@ public final class EpisodeExtractor {
 		
 		files.addAll(tmpFiles);
 		
-		if (new File(Settings.EPISODES_PATH + Data.currentEpisodeName + "\\map.bmp").exists()) {
-			ze.add(new ZipEntry("episodes\\" + Data.currentEpisodeName + "\\map.bmp"));
+		if (new File(Settings.EPISODES_PATH + Data.currentEpisodeName + File.separator + "map.bmp").exists()) {
+			ze.add(new ZipEntry("episodes"  + File.separator + Data.currentEpisodeName + File.separator + "map.bmp"));
 			
-			files.add(new File(Settings.EPISODES_PATH + Data.currentEpisodeName + "\\map.bmp"));
+			files.add(new File(Settings.EPISODES_PATH + Data.currentEpisodeName + File.separator + "map.bmp"));
 		}
 		
-		if (new File(Settings.EPISODES_PATH + Data.currentEpisodeName + "\\readme.txt").exists()) {
+		if (new File(Settings.EPISODES_PATH + Data.currentEpisodeName + File.separator + "readme.txt").exists()) {
 			ze.add(new ZipEntry("readme.txt"));
 			
-			files.add(new File(Settings.EPISODES_PATH + Data.currentEpisodeName + "\\readme.txt"));
+			files.add(new File(Settings.EPISODES_PATH + Data.currentEpisodeName + File.separator + "readme.txt"));
 		}
 		
-		if (new File(Settings.EPISODES_PATH + Data.currentEpisodeName + "\\pk2stuff.bmp").exists()) {
-			ze.add(new ZipEntry("gfx\\pk2stuff.bmp"));
+		if (new File(Settings.EPISODES_PATH + Data.currentEpisodeName + File.separator + "pk2stuff.bmp").exists()) {
+			ze.add(new ZipEntry("gfx" + File.separator + "pk2stuff.bmp"));
 			
-			files.add(new File(Settings.EPISODES_PATH + Data.currentEpisodeName + "\\pk2stuff.bmp"));
+			files.add(new File(Settings.EPISODES_PATH + Data.currentEpisodeName + File.separator + "pk2stuff.bmp"));
 		}
 		
 		ZipOutputStream zop = null;
@@ -187,7 +187,7 @@ public final class EpisodeExtractor {
 		if (!isVanilla(filename.trim(), list) && !trackList.contains(getPath(filename.trim(), folder).getAbsolutePath())) {
 			File entry = getPath(filename, folder);
 			
-			ze.add(new ZipEntry("episodes\\" + Data.currentEpisodeName + "\\" + entry.getName().trim()));
+			ze.add(new ZipEntry("episodes"  + File.separator + Data.currentEpisodeName + File.separator + entry.getName().trim()));
 			
 			if (entry != null) {
 				tmpFiles.add(entry);
@@ -202,7 +202,7 @@ public final class EpisodeExtractor {
 			PK2Sprite spr = new PK2Sprite(filename);
 			
 			File sprPath = getSpritePath(filename);
-			ze.add(new ZipEntry("episodes\\" + Data.currentEpisodeName + "\\" + filename));
+			ze.add(new ZipEntry("episodes"  + File.separator + Data.currentEpisodeName + File.separator + filename));
 			tmpSprFiles.add(sprPath);
 			
 			trackList.add(sprPath.getAbsolutePath());
@@ -210,7 +210,7 @@ public final class EpisodeExtractor {
 			for (int i = 0; i < spr.soundFiles.length - 2; i++) { // Only 5 of the 7 sounds are actually used, the last 2 are always empty
 				if (!spr.cleanString(spr.soundFiles[i]).isEmpty()) {
 					if (!isVanilla(spr.cleanString(spr.soundFiles[i]), sprites) && !trackList.contains(getSpritePath(spr.cleanString(spr.soundFiles[i])).getAbsolutePath())) {
-						ze.add(new ZipEntry("episodes\\" + Data.currentEpisodeName + "\\" + spr.cleanString(spr.soundFiles[i])));
+						ze.add(new ZipEntry("episodes"  + File.separator + Data.currentEpisodeName + File.separator + spr.cleanString(spr.soundFiles[i])));
 						
 						tmpSprFiles.add(getSpritePath(spr.cleanString(spr.soundFiles[i])));
 
@@ -219,11 +219,11 @@ public final class EpisodeExtractor {
 				}
 			}
 			
-			if (!isVanilla(spr.cleanString(spr.imageFile).toLowerCase(), sprites) && !trackList.contains((sprPath.getParentFile().getAbsolutePath() + "\\" + spr.cleanString(spr.imageFile)))) {
-				ze.add(new ZipEntry("episodes\\" + Data.currentEpisodeName + "\\" + spr.cleanString(spr.imageFile)));
-				tmpSprFiles.add(new File(sprPath.getParentFile().getAbsolutePath() + "\\" + spr.cleanString(spr.imageFile)));
+			if (!isVanilla(spr.cleanString(spr.imageFile).toLowerCase(), sprites) && !trackList.contains((sprPath.getParentFile().getAbsolutePath() + File.separator + spr.cleanString(spr.imageFile)))) {
+				ze.add(new ZipEntry("episodes"  + File.separator + Data.currentEpisodeName + File.separator + spr.cleanString(spr.imageFile)));
+				tmpSprFiles.add(new File(sprPath.getParentFile().getAbsolutePath() + File.separator + spr.cleanString(spr.imageFile)));
 				
-				trackList.add(sprPath.getParentFile().getAbsolutePath() + "\\" + spr.cleanString(spr.imageFile).trim());
+				trackList.add(sprPath.getParentFile().getAbsolutePath() + File.separator + spr.cleanString(spr.imageFile).trim());
 			}
 			
 			addDependendSprites(spr.atkSprite1, spr);
@@ -242,10 +242,10 @@ public final class EpisodeExtractor {
 	private static File getPath(String file, String folder) {
 		File f = null;
 		
-		if (new File(Settings.EPISODES_PATH + Data.currentEpisodeName + "\\" + file).exists()) {
-			f = new File(Settings.EPISODES_PATH + Data.currentEpisodeName + "\\" + file);
+		if (new File(Settings.EPISODES_PATH + Data.currentEpisodeName + File.separator + file).exists()) {
+			f = new File(Settings.EPISODES_PATH + Data.currentEpisodeName + File.separator + file);
 		} else {
-			f = new File(folder + "\\" + file);
+			f = new File(folder + File.separator + file);
 		}
 		
 		return f;
@@ -254,10 +254,10 @@ public final class EpisodeExtractor {
 	private static File getSpritePath(String file) {
 		File f = null;
 		
-		if (new File(Settings.EPISODES_PATH + Data.currentEpisodeName + "\\" + file).exists()) {
-			f = new File(Settings.EPISODES_PATH + Data.currentEpisodeName + "\\" + file);
+		if (new File(Settings.EPISODES_PATH + Data.currentEpisodeName + File.separator + file).exists()) {
+			f = new File(Settings.EPISODES_PATH + Data.currentEpisodeName + File.separator + file);
 		} else {
-			f = new File(Settings.SPRITE_PATH + "\\" + file);
+			f = new File(Settings.SPRITE_PATH + File.separator + file);
 		}
 		
 		return f;

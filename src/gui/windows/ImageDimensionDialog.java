@@ -227,7 +227,7 @@ public class ImageDimensionDialog extends JDialog {
 		
 		try {
 			if (Data.currentEpisodePath != null) {
-				imageFile = new File(Data.currentEpisodePath + "\\sprites\\" + file);
+				imageFile = new File(Data.currentEpisodePath + File.separator + "sprites"  + File.separator + file);
 				
 				if (!imageFile.exists()) {
 					imageFile = new File(Settings.SPRITE_PATH + file);
